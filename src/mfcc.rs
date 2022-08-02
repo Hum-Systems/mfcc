@@ -102,7 +102,7 @@ impl Transform {
         self
     }
 
-    pub fn transform(&mut self, input: &[i16], output: &mut [f64]) {
+    pub fn transform(&mut self, input: &[f32], output: &mut [f64]) {
         assert_eq!(input.len(), self.buffer_size);
         assert_eq!(output.len(), self.maxfilter * 3);
 

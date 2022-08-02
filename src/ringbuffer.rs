@@ -2,7 +2,7 @@ use std::i16;
 use std::f64::consts::PI;
 
 pub struct Ringbuffer {
-    inner: Vec<i16>,
+    inner: Vec<f32>,
     pos: usize,
     window: Vec<f64>
 }
@@ -12,13 +12,13 @@ impl Ringbuffer {
         let window = (0..capacity).map(|x| 0.54 - 0.46 * (2.0*PI* (x as f64) / capacity as f64).cos()).collect();
 
         Ringbuffer {
-            inner: vec![0; capacity],
+            inner: vec![0.0; capacity],
             pos: 0,
             window
         }
     }
 
-    pub fn append_back(&mut self, samples: &[i16]) {
+    pub fn append_back(&mut self, samples: &[f32]) {
         for sample in samples {
             self.inner[self.pos] = *sample;
 
